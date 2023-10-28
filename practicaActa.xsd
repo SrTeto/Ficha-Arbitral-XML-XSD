@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="acta" type="tipoActa">
+        <!--KEY Y KEYREF-->
         <xs:key name="keyCodEquipo">
             <xs:selector xpath="clubes/club" />
             <xs:field xpath="@codEquipo"></xs:field>
@@ -30,7 +31,8 @@
             <xs:field xpath="@codEquipo"></xs:field>
         </xs:keyref>
     </xs:element>
-    <!--TIPOSSIMPLES-->
+    <!--FIN SECCION KEY Y KEYREF-->
+    <!--GRUPO-->
     <xs:group name="grupoIncidencias">
         <xs:sequence>
             <xs:element name="amonestaciones" type="tipoAmonestacion" />
@@ -43,6 +45,8 @@
             <xs:element name="ooaa" type="comentariosLargos" default="Ninguna" />
         </xs:sequence>
     </xs:group>
+     <!--FIN SECCION GRUPO-->
+    <!--TIPOSSIMPLES-->
     <xs:simpleType name="comentariosLargos">
         <xs:restriction base="xs:string">
             <xs:maxLength value="250"></xs:maxLength>
@@ -78,6 +82,13 @@
     <xs:simpleType name="nombreMax">
         <xs:restriction base="xs:string">
             <xs:maxLength value="20"></xs:maxLength>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="arbitrPosicion">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="principal" />
+            <xs:enumeration value="asistente" />
+            <xs:enumeration value="cuarto"></xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
     <!-- TIPOS COMPLEJOS-->
@@ -122,7 +133,7 @@
         <xs:sequence>
             <xs:element name="nombreApellidos" type="nombreMax" />
         </xs:sequence>
-        <xs:attribute name="posicion" use="required" />
+        <xs:attribute name="posicion" use="required" type="arbitrPosicion"/>
         <xs:attribute name="dni" type="tipoDni" use="optional" />
         <xs:attribute name="comite" use="required" />
         <xs:attribute name="pasaporte" type="tipoPasaporte" use="optional" />
