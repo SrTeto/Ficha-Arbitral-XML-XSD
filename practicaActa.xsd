@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="acta" type="tipoActa">
+        <xs:key name="keyCodEquipo">
+            <xs:selector xpath="clubes/club" />
+            <xs:field xpath="@codEquipo"></xs:field>
+        </xs:key>
+        <xs:keyref name="keyRefCod" refer="keyCodEquipo">
+            <xs:selector xpath="equipos/equipo"></xs:selector>
+            <xs:field xpath="@codEquipo"></xs:field>
+        </xs:keyref>
+        <xs:keyref name="keyRefCodSus" refer="keyCodEquipo">
+            <xs:selector xpath="sustituciones/sustitucion"></xs:selector>
+            <xs:field xpath="@codEquipo"></xs:field>
+        </xs:keyref>
+        <xs:keyref name="keyRefCodGoles" refer="keyCodEquipo">
+            <xs:selector xpath="goles/gol/jugador"></xs:selector>
+            <xs:field xpath="@codEquipo"></xs:field>
+        </xs:keyref>
+        <xs:keyref name="keyRefCodTarjetas" refer="keyCodEquipo">
+            <xs:selector xpath="tarjetas/tarjeta"></xs:selector>
+            <xs:field xpath="@codEquipo"></xs:field>
+        </xs:keyref>
+        <xs:keyref name="keyRefCodAmonestaciones" refer="keyCodEquipo">
+            <xs:selector xpath="incidencias/amonestaciones/amonestacion"></xs:selector>
+            <xs:field xpath="@codEquipo"></xs:field>
+        </xs:keyref>
+        <xs:keyref name="keyRefCodExpulsiones" refer="keyCodEquipo">
+            <xs:selector xpath="incidencias/expulsiones/expulsion"></xs:selector>
+            <xs:field xpath="@codEquipo"></xs:field>
+        </xs:keyref>
+    </xs:element>
+    <!--TIPOSSIMPLES-->
+    <xs:group name="grupoIncidencias">
+        <xs:sequence>
+            <xs:element name="amonestaciones" type="tipoAmonestacion" />
+            <xs:element name="expulsiones" type="expulsionesGeneral" />
+            <xs:element name="otrasIncidencias" default="Ninguna" type="comentariosLargos" />
+            <xs:element name="amonestacionTenicos" type="comentariosLargos" />
+            <xs:element name="otrasIncidenciasTecnicas" type="comentariosLargos" />
+            <xs:element name="publico" type="comentariosLargos" default="Normal" />
+            <xs:element name="dotjei" type="comentariosLargos" default="Ninguna" />
+            <xs:element name="ooaa" type="comentariosLargos" default="Ninguna" />
+        </xs:sequence>
+    </xs:group>
+    <xs:simpleType name="comentariosLargos">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="250"></xs:maxLength>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoNum">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"></xs:minInclusive>
+            <xs:maxInclusive value="30"></xs:maxInclusive>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="formatoCod">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="puestoJugador">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="suplente" />
+            <xs:enumeration value="titular" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoDni">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{8}[A-Z]{1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoPasaporte">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3}\d{6}[A-Z]{1}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nombreMax">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"></xs:maxLength>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- TIPOS COMPLEJOS-->
+    <!-- CUERPO ACTA Y REFERENCIA MAYORES -->
+    <xs:complexType name="tipoActa">
+        <xs:sequence>
+            <xs:element name="campeonato" type="xs:string" minOccurs="1" />
+            <xs:element name="campo" type="xs:string" minOccurs="1" />
+            <xs:element name="clubes" type="tipoClub" />
+            <xs:element name="arbitros" type="tipoArbitro" />
+            <xs:element name="equipos" type="tipoEquipo" />
+            <xs:element name="resulFinal" type="tipoResultados" />
+            <xs:element name="sustituciones" type="tipoSustitucion" />
+            <xs:element name="goles" type="tipoPuntaje" />
+            <xs:element name="tarjetas" type="tarjetas" />
+            <xs:element name="incidencias" type="tipoIncidencias" />
+        </xs:sequence>
+        <xs:attribute name="fecha" use="required" type="xs:date" />
+        <xs:attribute name="lugar" use="required" />
+        <xs:attribute name="temporada" fixed="2023-2024" />
+        <xs:attribute name="jornada" type="xs:integer" use="required" />
+    </xs:complexType>
+    <!-- SECCION CLUBES-->
+    <xs:complexType name="tipoClubes">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="codEquipo" use="required" />
+                <xs:attribute name="ciudad" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="tipoClub">
+        <xs:sequence>
+            <xs:element name="club" minOccurs="2" maxOccurs="2" type="tipoClubes"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- FIN SECCION CLUBES-->
+
+    <!-- SECCION ARBITROS-->
+    <xs:complexType name="tipoArbitros">
+        <xs:sequence>
+            <xs:element name="nombreApellidos" type="nombreMax" />
+        </xs:sequence>
+        <xs:attribute name="posicion" use="required" />
+        <xs:attribute name="dni" type="tipoDni" use="optional" />
+        <xs:attribute name="comite" use="required" />
+        <xs:attribute name="pasaporte" type="tipoPasaporte" use="optional" />
+    </xs:complexType>
+    <xs:complexType name="tipoArbitro">
+        <xs:sequence>
+            <xs:element name="arbitro" maxOccurs="4" type="tipoArbitros" />
+        </xs:sequence>
+    </xs:complexType>
+    <!-- FIN SECCION ARBITROS-->
+    <!-- SECCION EQUIPOS-->
+    <xs:complexType name="tipoJugador">
+        <xs:sequence>
+            <xs:element name="jugador" minOccurs="11" maxOccurs="unbounded" type="tipoJugadores" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipoJugadores">
+        <xs:all>
+            <xs:element name="nombreApellido" type="nombreMax" />
+            <xs:element name="goles" minOccurs="0" type="xs:string" />
+        </xs:all>
+        <xs:attribute name="dni" type="tipoDni" use="optional" />
+        <xs:attribute name="num" type="tipoNum" use="required" />
+        <xs:attribute name="tipoJugador" use="required" type="puestoJugador" />
+        <xs:attribute name="pasaporte" type="tipoPasaporte" use="optional" />
+    </xs:complexType>
+    <xs:complexType name="tipoEntrenadorPrincipal">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="licencia" type="xs:integer" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="tipoEntrenadorSecundario">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="licencia" type="xs:integer" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="tipoCuerpoTecnico">
+        <xs:sequence>
+            <xs:element name="entrenadorPrincipal" type="tipoEntrenadorPrincipal" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="entrenadorSecundario" type="tipoEntrenadorSecundario" minOccurs="0" maxOccurs="3"/>
+            <xs:element name="delegadoCampo" minOccurs="1" maxOccurs="1" type="nombreMax" />
+            <xs:element name="delegadoEquipo" minOccurs="0" maxOccurs="3" type="nombreMax" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipoEquipos">
+        <xs:sequence>
+            <xs:element name="cuerpoTecnico" type="tipoCuerpoTecnico"/>
+            <xs:element name="jugadores" type="tipoJugador"/>
+        </xs:sequence>
+        <xs:attribute name="codEquipo" use="required" />
+        <xs:attribute name="grupo" use="required" />
+        <xs:attribute name="jugCapitan" type="xs:integer" use="required" />
+    </xs:complexType>
+    <xs:complexType name="tipoEquipo">
+        <xs:sequence>
+            <xs:element name="equipo" maxOccurs="2" minOccurs="2" type="tipoEquipos"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- FIN SECCION EQUIPOS-->
+
+    <!--  SECCION RESULTADO FINAL-->
+    <xs:complexType name="tipoTiempos">
+        <xs:sequence>
+            <xs:element name="equipo" minOccurs="2" maxOccurs="2"/>
+        </xs:sequence>
+        <xs:attribute name="horaInicio" use="required" type="xs:time" />
+    </xs:complexType>
+    <xs:complexType name="tipoTiempo">
+        <xs:sequence>
+            <xs:element name="tiempo" maxOccurs="unbounded" type="tipoTiempos"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipoResultados">
+        <xs:sequence>
+            <xs:element name="resultado" type="tipoTiempo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!--  FIN SECCION RESULTADO FINAL -->
+    <!--  SECCION SUSTITUCIONES-->
+    <xs:complexType name="tipoEntra">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="num" type="tipoNum" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="tipoSale">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="num" type="tipoNum" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="tipoSustituciones">
+        <xs:sequence>
+            <xs:element name="entraBanco" type="tipoEntra">
+            </xs:element>
+            <xs:element name="saleCampo" type="tipoSale">
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="codEquipo" use="required" />
+        <xs:attribute name="min" use="required" />
+    </xs:complexType>
+    <xs:complexType name="tipoSustitucion">
+        <xs:sequence>
+            <xs:element name="sustitucion" maxOccurs="5" minOccurs="0" type="tipoSustituciones" />
+        </xs:sequence>
+    </xs:complexType>
+    <!--  FIN SECCION SUSTITUCIONES-->
+    <!--   SECCION GOLES-->
+
+    <xs:complexType name="tipoGoles">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="codEquipo" use="required" />
+                <xs:attribute name="num" type="xs:integer" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="tipoGol">
+        <xs:sequence>
+            <xs:element name="jugador" type="tipoGoles" />
+        </xs:sequence>
+        <xs:attribute name="min" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="tipoPuntaje">
+        <xs:sequence>
+            <xs:element name="gol" maxOccurs="unbounded" type="tipoGol" />
+        </xs:sequence>
+    </xs:complexType>
+    <!--   FIN SECCION GOLES-->
+    <!--    SECCION TARJETAS-->
+    <xs:complexType name="tipoTarjetas">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="num" type="tipoNum" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="tipoTarjeta">
+        <xs:sequence>
+            <xs:element name="jugador" type="tipoTarjetas" />
+        </xs:sequence>
+        <xs:attribute name="codEquipo" use="required" />
+        <xs:attribute name="tarjetaTipo" use="required" />
+        <xs:attribute name="min" use="required" />
+    </xs:complexType>
+    <xs:complexType name="tarjetas">
+        <xs:sequence>
+            <xs:element name="tarjeta" maxOccurs="unbounded" minOccurs="0" type="tipoTarjeta">
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!--   FIN SECCION TARJETAS-->
+    <!-- SECCION AMONESTACIONES-->
+    <!--  SECCION EXPULSIONES-->
+    <xs:complexType name="tipoExpulsiones">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="num" type="tipoNum" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="tipoExpulsion">
+        <xs:sequence>
+            <xs:element name="jugador" type="tipoExpulsiones" />
+            <xs:element name="motivo" type="comentariosLargos" />
+        </xs:sequence>
+        <xs:attribute name="codEquipo" use="required" />
+        <xs:attribute name="min" use="required" />
+    </xs:complexType>
+    <xs:complexType name="expulsionesGeneral">
+        <xs:sequence>
+            <xs:element name="expulsion" type="tipoExpulsion" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <!--   FIN SECCION EXPULSIONES-->
+    <xs:complexType name="tipoAmonestaciones">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="codEquipo" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="tipoAmonestacion">
+        <xs:sequence>
+            <xs:element name="amonestacion" maxOccurs="unbounded" type="tipoAmonestaciones" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipoIncidencias">
+        <xs:group ref="grupoIncidencias"/>
+    </xs:complexType>
+</xs:schema>

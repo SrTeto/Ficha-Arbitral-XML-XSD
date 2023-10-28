@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<acta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="practicaActa.xsd" fecha="2023-10-25" lugar="Alcala de Henares,Madrid" temporada="2023-2024" jornada="9">
+    <!-- OJO CON ESTA FECHA QUE VA ESCRITA EN TEXTO EL MES-->
+    <campeonato>Campeonato Nacional de Primera Division(Liga Regular-Ùnico)</campeonato>
+    <campo>Estadio Metropolitano Javier</campo>
+    <clubes>
+        <club codEquipo="CDL" ciudad="Alcala de Henares">Club Deportivo Lara</club>
+        <!-- PREGUNTAR -->
+        <club codEquipo="VFC" ciudad="Valencia">Valencia Futbol Club</club>
+    </clubes>
+    <arbitros>
+        <arbitro posicion="principal" dni="75622849X" comite="CTA">
+            <nombreApellidos>Pedro Lopez</nombreApellidos>
+        </arbitro>
+        <arbitro posicion="asistente" pasaporte="PHP908601J" comite="PGB">
+            <nombreApellidos>Javier Navarro</nombreApellidos>
+        </arbitro>
+        <arbitro posicion="asistente" pasaporte="PHP908601J" comite="PGB">
+            <nombreApellidos>Marek Nowak</nombreApellidos>
+        </arbitro>
+        <arbitro posicion="cuarto" pasaporte="FSF767012Y" comite="SFA">
+            <nombreApellidos>Ewan MacLeod</nombreApellidos>
+        </arbitro>
+    </arbitros>
+    <equipos>
+        <!-- PRIMER EQUIPO-->
+        <!-- La declaracion LOCAL O VISITANTE no fue requerida, la he implementado yo-->
+        <equipo codEquipo="CDL" grupo="local" jugCapitan="2">
+            <cuerpoTecnico>
+                <entrenadorPrincipal licencia="3529">Cristobal Carrasco</entrenadorPrincipal>
+                <entrenadorSecundario licencia="1128">Eren Jagger</entrenadorSecundario>
+                <!-- NECESARIO Y OBLIGATORIO-->
+                <delegadoCampo>Antonio  Velazquez</delegadoCampo>
+                <!-- El delegado de equipo no siempre tiene que estar-->
+                <!-- Delegado de equipo no es requerido, la he implementado yo-->
+                <delegadoEquipo>Antonio  Velazquez</delegadoEquipo>
+            </cuerpoTecnico>
+            <jugadores>
+                <jugador dni="54670551B" num="2" tipoJugador="titular">
+                    <goles>1</goles>
+                    <nombreApellido>Adalberto Carrasco</nombreApellido>
+                </jugador>
+                <jugador dni="32409819J" num="1" tipoJugador="titular">
+                    <nombreApellido>Taliby Diakite</nombreApellido>
+                </jugador>
+                <jugador dni="18494019H" num="4" tipoJugador="titular">
+                    <nombreApellido>FranciscoGarcia</nombreApellido>
+                </jugador>
+                <jugador dni="36641105N" num="5" tipoJugador="titular">
+                    <nombreApellido>Arnau Gaixas Pont</nombreApellido>
+                </jugador>
+                <jugador dni="29003116R" num="7" tipoJugador="titular">
+                    <nombreApellido>Eduardo Lorenz</nombreApellido>
+                </jugador>
+                <jugador pasaporte="ZIP939900X" num="8" tipoJugador="titular">
+                    <nombreApellido>AHN JUNEHYUK</nombreApellido>
+                </jugador>
+                <jugador dni="09986091C" num="9" tipoJugador="titular">
+                    <nombreApellido>Francisco  Jaramillo</nombreApellido>
+                </jugador>
+                <jugador pasaporte="DXZ315147F" num="10" tipoJugador="titular">
+                    <nombreApellido>Arossio Dunkelheit</nombreApellido>
+                    <goles>1</goles>
+                </jugador>
+                <jugador dni="31514772F" num="11" tipoJugador="titular">
+                    <nombreApellido>Victor Gimenez</nombreApellido>
+                </jugador>
+                <jugador dni="83206993P" num="13" tipoJugador="titular">
+                    <nombreApellido>Ricardo Garcia</nombreApellido>
+                </jugador>
+                <jugador dni="68798369X" num="15" tipoJugador="titular">
+                    <nombreApellido>Rodrigo Cortez</nombreApellido>
+                </jugador>
+                <!-- JUGADORES SUSTITUCION-->
+                <jugador dni="81610131J" num="23" tipoJugador="suplente">
+                    <nombreApellido>Eladio Ramirez</nombreApellido>
+                </jugador>
+                <jugador dni="66325626C" num="6" tipoJugador="suplente">
+                    <nombreApellido>Ramon Primo</nombreApellido>
+                </jugador>
+                <jugador dni="99623625E" num="14" tipoJugador="suplente">
+                    <nombreApellido>Anyer Vargas</nombreApellido>
+                </jugador>
+                <jugador dni="28026804Q" num="29" tipoJugador="suplente">
+                    <nombreApellido>Luis Moreno</nombreApellido>
+                </jugador>
+                <jugador pasaporte="HOP795930L" num="25" tipoJugador="suplente">
+                    <nombreApellido>Nixon Velasquez</nombreApellido>
+                </jugador>
+            </jugadores>
+        </equipo>
+        <!--   SEGUNDO EQUIPO  -->
+        <equipo codEquipo="VFC" grupo="Visitante" jugCapitan="3">
+            <cuerpoTecnico>
+                <entrenadorPrincipal licencia="8539">Salomon Rondon</entrenadorPrincipal>
+                <entrenadorSecundario licencia="2295">Aitor Cringe</entrenadorSecundario>
+                <!-- El delegado de equipo no siempre tiene que estar-->
+                <delegadoCampo>Roberto Carlos</delegadoCampo>
+            </cuerpoTecnico>
+            <jugadores>
+                <jugador dni="12345678A" num="16" tipoJugador="titular">
+                    <nombreApellido>Javier Rodriguez</nombreApellido>
+                </jugador>
+                <jugador dni="98765432B" num="3" tipoJugador="titular">
+                    <nombreApellido>Luis Sanchez</nombreApellido>
+                </jugador>
+                <jugador pasaporte="CZA302504Y" num="20" tipoJugador="titular">
+                    <nombreApellido>Mario Gonzalez</nombreApellido>
+                </jugador>
+                <jugador dni="87654321D" num="12" tipoJugador="titular">
+                    <nombreApellido>Pedro Martinez</nombreApellido>
+                </jugador>
+                <jugador pasaporte="QCA910653K" num="22" tipoJugador="titular">
+                    <nombreApellido>Lautaro Rodriguez</nombreApellido>
+                </jugador>
+                <jugador dni="23456789F" num="17" tipoJugador="titular">
+                    <nombreApellido>Juan Lopez</nombreApellido>
+                </jugador>
+                <jugador dni="87654321G" num="19" tipoJugador="titular">
+                    <nombreApellido>Martin Fernandez</nombreApellido>
+                </jugador>
+                <jugador pasaporte="NVF837784P" num="21" tipoJugador="titular">
+                    <nombreApellido>Carlos Ramirez</nombreApellido>
+                </jugador>
+                <jugador dni="76543210I" num="18" tipoJugador="titular">
+                    <nombreApellido>Daniel Lopez</nombreApellido>
+                </jugador>
+                <jugador dni="65432109J" num="30" tipoJugador="titular">
+                    <nombreApellido>Jose Hernandez</nombreApellido>
+                </jugador>
+                <!--jugadores
+                suplentes -->
+                <jugador dni="11223344K" num="24" tipoJugador="suplente">
+                    <nombreApellido>Fernando Garcia</nombreApellido>
+                </jugador>
+                <jugador dni="99887766L" num="27" tipoJugador="suplente">
+                    <nombreApellido>Eli Martinez</nombreApellido>
+                </jugador>
+                <jugador pasaporte="IGY961073A" num="26" tipoJugador="suplente">
+                    <nombreApellido>Rafael Rodriguez</nombreApellido>
+                </jugador>
+                <jugador dni="44332211N" num="28" tipoJugador="suplente">
+                    <nombreApellido>Miguel Lopez</nombreApellido>
+                </jugador>
+                <jugador pasaporte="XNZ719706Y" num="1" tipoJugador="suplente">
+                    <nombreApellido>Anton Fernandez</nombreApellido>
+                </jugador>
+            </jugadores>
+        </equipo>
+    </equipos>
+    <resulFinal>
+        <resultado>
+            <tiempo horaInicio="22:00:00">
+                <equipo codEquipo="CDL" goles="2">DOS</equipo>
+                <equipo codEquipo="VFC" goles="0">CERO</equipo>
+            </tiempo>
+            <tiempo horaInicio="23:00:00">
+                <equipo codEquipo="CDL" goles="2">DOS</equipo>
+                <equipo codEquipo="VFC" goles="0">CERO</equipo>
+            </tiempo>
+        </resultado>
+    </resulFinal>
+    <sustituciones>
+        <sustitucion codEquipo="CDL" min="85'">
+            <entraBanco num="2">Adalberto Carrasco</entraBanco>
+            <saleCampo num="25">Nixon Velasquez</saleCampo>
+        </sustitucion>
+        <sustitucion codEquipo="VFC" min="80'">
+            <entraBanco num="30">Jose Hernandez</entraBanco>
+            <saleCampo num="28">Miguel Lopez</saleCampo>
+        </sustitucion>
+        <sustitucion codEquipo="VFC" min="92'">
+            <entraBanco num="22">Lautaro Rodriguez</entraBanco>
+            <saleCampo num="1">Anton Fernandez</saleCampo>
+        </sustitucion>
+        <sustitucion codEquipo="VFC" min="89'">
+            <entraBanco num="21">Carlos Ramirez</entraBanco>
+            <saleCampo num="26">Rafael Rodriguez</saleCampo>
+        </sustitucion>
+    </sustituciones>
+    <goles>
+        <gol min="10'">
+            <jugador codEquipo="CDL" num="2">Adalberto Carrasco</jugador>
+        </gol>
+        <gol min="44">
+            <jugador codEquipo="CDL" num="10">Arossio Dunkelheit</jugador>
+        </gol>
+    </goles>
+    <tarjetas>
+        <tarjeta codEquipo="CDL" tarjetaTipo="amarilla" min="37'">
+            <jugador num="2">Adalberto Carrasco</jugador>
+        </tarjeta>
+
+        <tarjeta codEquipo="VFC" tarjetaTipo="amarilla" min="10'">
+            <jugador num="21">Carlos Ramirez</jugador>
+        </tarjeta>
+        <tarjeta codEquipo="VFC" tarjetaTipo="amarilla" min="90'">
+            <jugador num="21">Carlos Ramirez</jugador>
+        </tarjeta>
+    </tarjetas>
+    <incidencias>
+        <!-- Estas amonestaciones pueden ir por escrita ya que son un llamado de Atencion-->
+        <!-- Dentro se indicara el jugador y su numero y el motivo por el cual se le llama la
+            atencion-->
+        <!-- Se restringira el limite de caracteres-->
+        <!-- VALOR POR DEFECTO SI NO TIENE NINGUNA-->
+        <amonestaciones>
+            <amonestacion codEquipo="CDL">
+                En el minuto 37 el jugador (2) Adalberto Carrasco fue amonestado
+                por el siguiente motivo:
+                Por sujetar a un adversario sin estar en
+                disputa el balón, haciéndolo de forma ostensible y persistente.
+            </amonestacion>
+            <amonestacion codEquipo="VFC">
+                En el minuto 10 el jugador (21) Carlos Ramirez fue amonestado por
+                el siguiente motivo: Por sujetar a un adversario sin estar el balón
+                en disputa, haciéndolo de forma ostensible y derribándole
+            </amonestacion>
+            <amonestacion codEquipo="VFC">
+                En el minuto 90 el jugador (21) Carlos Ramirez fue amonestado por el
+                siguiente motivo: Por hacer una entrada temeraria en la disputa
+                del balón
+            </amonestacion>
+        </amonestaciones>
+        <expulsiones>
+            <expulsion codEquipo="VFC" min="68'">
+                <jugador num="21">Carlos Ramirez</jugador>
+                <motivo>doble amarilla</motivo>
+            </expulsion>
+        </expulsiones>
+        <!-- VALOR POR DEFECTO SI NO TIENE NINGUNA-->
+        <otrasIncidencias>Ninguna</otrasIncidencias>
+
+        <!-- VALOR POR DEFECTO SI NO TIENE NINGUNA-->
+        <amonestacionTenicos>Ninguna</amonestacionTenicos>
+        <otrasIncidenciasTecnicas>Ninguna</otrasIncidenciasTecnicas>
+
+        <!-- VALOR POR DEFECTO NORMAL-->
+        <publico>Normal</publico>
+        <!-- DEFICIENCIAS OBSERVADAS EN EL TERRENO DE JUEGO E INSTALACIONES-->
+        <!-- VALOR POR DEFECTO NINGUNA-->
+        <dotjei>Ninguna</dotjei>
+        <!-- OTRAS OBSERVACIONES O AMPLIACIONES A LAS ANTERIORES-->
+        <!-- VALOR POR DEFECTO NINGUNA-->
+        <ooaa>Ninguna</ooaa>
+    </incidencias>
+</acta>
