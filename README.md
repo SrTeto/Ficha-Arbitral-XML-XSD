@@ -3,13 +3,13 @@
 
 Usalo a tu disposicion. 
 
-Actas Arbitrales Federacion Española en XML XSD
+Actas Arbitrales Federacion de Futbol Española en XML XSD
 
 Este proyecto fue creado gracias a una actividad evaluada del grado que estoy cursando actualmente.
 
 La finalidad de estos archivos es crear una estructura organizada y esquematizada teniendo como modelo el documento que deben llenar los arbitros en España cada vez que termine un partido de Futbol.
-en este se puede completar:
-Contenido XML
+Consta de un archivo xml que forma el Esquema y un documento XSD que verifica,corresponde y brinda funcionalidad al XML
+Contenido de ETIQUETAS XML:
 Fechas
 Temporadas
 Jornadas
